@@ -1,5 +1,6 @@
 package annotations;
 
+import annotations.sample.AnnotationWithValue;
 import annotations.sample.CustomToString;
 import annotations.sample.SampleEntity;
 import java.lang.reflect.Field;
@@ -8,6 +9,13 @@ public class AnnotationMain {
     public static void main(String[] args) {
         SampleEntity sampleEntity = new SampleEntity(1L, "자바카페");
         System.out.println(customToString(sampleEntity));
+
+
+        // Retention Class
+        SampleEntity sampleEntity2 = new SampleEntity(1L, null);
+        sampleEntity2.setName(null); // 오른쪽 노랑줄
+        System.out.println(sampleEntity2.getName());
+
     }
 
     private static String customToString(Object obj) {
@@ -39,5 +47,10 @@ public class AnnotationMain {
         result.append("]");
 
         return result.toString();
+    }
+
+    @AnnotationWithValue(value = "aa",elementName1 = 5)
+    private static void annotationWithValue(){
+
     }
 }
